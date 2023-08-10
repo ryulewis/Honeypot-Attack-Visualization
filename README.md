@@ -1,60 +1,52 @@
-# Honeypot Attack Visualization Project 
+# Honeypot Attack Visualization
 
-This project involves the creation of a honeypot attack visualization using Python's pandas and Folium libraries. The purpose of this project is to provide a geographical representation of honeypot attacks by plotting them on a heatmap. The heatmap displays the frequency and distribution of attacks across different countries. The project also includes data cleaning and filtering to ensure accurate and meaningful visualization results.
+This project generates an interactive heatmap to visualize honeypot attack data provided in a CSV file. The heatmap illustrates the frequency and distribution of attacks across different countries.
 
-## Requirements
+## Prerequisites
 
-Before running the code, make sure you have the following requirements installed:
+Before running the script, make sure you have the following:
 
-- Python (3.6+)
-- pandas library (`pip install pandas`)
+- Python 3.6 or higher
+- Pandas library (`pip install pandas`)
 - Folium library (`pip install folium`)
+- A CSV file containing your honeypot attack data
 
-## Getting Started
+## Data Format
 
-1. Clone or download this repository to your local machine.
-2. Ensure you have the necessary libraries installed by running the provided installation commands or using your preferred package manager.
+The CSV file must contain at least the following columns:
+
+- `latitude` - Latitude coordinate of the attack
+- `longitude` - Longitude coordinate of the attack
+- `country` - Country where the attack originated
+
+Any additional columns will be ignored.
 
 ## Usage
 
-1. Place your honeypot attack data in a CSV file named `honeypot.csv` in the same directory as the script.
-2. Open the script file (`honeypot_visualization.py`) in a Python-compatible IDE or text editor.
-
-### Script Overview
-
-The script performs the following steps:
-
-1. **Loading Data**: The script imports the required libraries and loads the attack data from the `honeypot.csv` file into a pandas DataFrame.
-
-2. **Data Cleaning**: The script converts latitude and longitude columns to float data types and removes any data points with latitude values outside the valid range of -90 to 90.
-
-3. **Filtering**: The script filters the data to remove outliers based on the valid latitude range.
-
-4. **Calculating Country Frequencies**: The script calculates the frequency of occurrences for each country in the filtered dataset.
-
-5. **Sorting Countries**: The countries are sorted in descending order based on their attack frequencies.
-
-6. **Creating the Heatmap**: A Folium map is created centered around the mean latitude and longitude of the filtered dataset. A heatmap is generated using the latitude and longitude coordinates.
-
-7. **Adding a Legend**: A legend displaying the top N countries with the highest attack frequencies is added to the map.
-
-8. **Saving the Map**: The final map, including the heatmap and legend, is saved as an HTML file named `honeypot_heatmap.html`.
+1. Place your honeypot attack data CSV file in the same directory as `honeypot_visualization.py` 
+2. Open `honeypot_visualization.py` and update the CSV filename on line 10 to match your data file.
+3. Tweak the heatmap settings on lines 35-37 to best visualize your data distribution.
+4. Adjust the legend location and number of top countries on lines 44-58.
+5. Run `python honeypot_visualization.py`
+6. The output heatmap HTML will be saved as `honeypot_heatmap.html`
 
 ## Customization
 
-You can customize various parameters of the heatmap and the legend to fit your preferences. Adjust parameters such as the heatmap radius, blur, max_zoom, and the number of top countries displayed in the legend.
+- Adjust heatmap radius, blur, and max zoom to fit your data distribution.
+- Update the legend location by modifying the CSS values.
+- Change number of top countries shown in the legend.
+- Further customize the Folium map - see the library docs for more options.
+- Additional data cleaning or filtering may be needed depending on your data quality.
+
+## Troubleshooting
+
+- Ensure your CSV data file matches the required format.
+- Try different heatmap parameter values if the data looks too dense or sparse.  
+- Check that the legend country names match values present in your data.
+- Refer to Folium documentation for help customizing the map.
 
 ## Disclaimer
 
-This project is intended for educational and informational purposes only. The project should not be used for making security-related decisions without proper validation and analysis of real attack data. The creator of this project is not responsible for any misuse, misinterpretation, or unintended consequences resulting from the use of this project.
+This project is intended for educational and informational purposes only. The map visualization provides an overview of attack trends based on the provided data, but does not incorporate additional context or verification.
 
-## Running the Script
-
-1. Open a terminal or command prompt.
-2. Navigate to the directory containing the script (`honeypot_visualization.py`).
-3. Run the script using the command: `python honeypot_visualization.py`
-4. The script will process the data, generate the heatmap, and save it as `honeypot_heatmap.html` in the same directory.
-
-## Conclusion
-
-This project provides a visual representation of honeypot attacks' geographical distribution, making it easier to identify trends and analyze attack patterns across different countries. The heatmap and legend provide insights into the frequency of attacks, allowing for informed decision-making in terms of cybersecurity strategies and mitigation efforts.
+The results should not be used to make definitive security-related decisions without further analysis. The creator is not responsible for any misuse, misinterpretation, or unintended consequences from the use of this visualization.
